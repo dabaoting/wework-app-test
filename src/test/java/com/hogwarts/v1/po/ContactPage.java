@@ -1,6 +1,6 @@
-package com.hogwarts.po;
+package com.hogwarts.v1.po;
 
-import com.hogwarts.po.contact.Member;
+import com.hogwarts.v1.po.contact.Member;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 
@@ -20,13 +20,17 @@ public class ContactPage extends BasePage{
 
     private static String DEPARTMENT_XPATH = "//*[@resource-id='com.tencent.wework:id/b5m'][@text='设置部门']";
 
-    private static String DEPARTMENT_HX_XPATH = "//*@text='火星测试部']";
+    private static String DEPARTMENT_HX_XPATH = "//*[@text='火星测试部']";
 
     private static String DEPARTMENT_101_XPATH = "//*[@text='硬糖101']";
 
     private static String DEPARTMENT_CONFIRM_ID = "com.tencent.wework:id/gsh";
 
     private static String MEMBER_SAVE_ID = "com.tencent.wework:id/i6k";
+
+    private static String BACK_FROM_MEMBER_ADD_ID = "com.tencent.wework:id/i63";
+
+    private static String SEARCH_ID = "com.tencent.wework:id/i6n";
 
     public ContactPage() {
     }
@@ -61,14 +65,46 @@ public class ContactPage extends BasePage{
             click(By.id(DEPARTMENT_CONFIRM_ID));//确定所选部门
 
             //保存成员信息
-            click(By.id(MEMBER_SAVE_ID));
+//            click(By.id(MEMBER_SAVE_ID));
         }
     }
 
 
+    /**
+     * 指定部门查询成员
+     * @param Depart1
+     * @param Depart2
+     * @param members
+     */
+    public String search(String Depart1,String Depart2,List<Member> members) throws Exception{
+        //返回到通讯录
+        backFromMemberAdd();
+        //滑动到要选的部门 todo
 
+        scroll();
+        click(By.xpath(DEPARTMENT_HX_XPATH));
+        click(By.xpath(DEPARTMENT_101_XPATH));
+        String text = getText(By.id(""));
+        return text;
 
+    }
+
+    /**
+     * 从【添加成员】返回
+     */
+    public void backFromMemberAdd() throws Exception{
+        Thread.sleep(5000);
+        click(By.id(BACK_FROM_MEMBER_ADD_ID));
+    }
+
+    /**
+     * 搜索指定成员
+     * @param members
+     */
     public void search(List<Member> members) {
+        for (Member member:members) {
+
+        }
 
     }
 }

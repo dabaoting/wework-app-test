@@ -1,4 +1,4 @@
-package com.hogwarts;
+package com.hogwarts.v2.po;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,8 +42,8 @@ public class ContactTest extends BasePage {
 
     }
 
-    @ParameterizedTest
-    @MethodSource("membersData")
+//    @ParameterizedTest
+//    @MethodSource("membersData")
     void addMember(List<Member> members) throws Exception{
 
         //新增成员
